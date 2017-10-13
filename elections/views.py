@@ -20,7 +20,10 @@ def index(request):
 	'''
 	#return HttpResponse(content)
 	context = {'candidates' : candidates }
-	print("#### request : " , request.method)
+	reqinfo = request.META
+	for item in reqinfo.keys():
+		print("### {} : {}".format(item,reqinfo[item]))
+	print(reqinfo)
 	return render(request, 'elections/index.html', context)
 
 def areas(request, area):
